@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業履歷 | 映玲 (Anh Linh)</title>
+    <style>
+        /* CSS 風格參考 LinkedIn */
+        :root {
+            --linkedin-blue: #0073b1;
+            --bg-gray: #f3f2ef;
+            --text-main: rgba(0,0,0,0.9);
+            --text-sub: rgba(0,0,0,0.6);
+            --white: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", "Segoe UI", sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+
+        /* Profile Header Card */
+        .profile-card {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        }
+
+        .banner {
+            height: 160px;
+            background: linear-gradient(135deg, #0073b1 0%, #00a0dc 100%);
+        }
+
+        .profile-info {
+            padding: 65px 24px 24px 24px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 152px;
+            height: 152px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            position: absolute;
+            top: -76px;
+            left: 24px;
+            background-color: #eee;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .name { font-size: 28px; font-weight: 700; color: #000; margin-bottom: 4px; }
+        .headline { font-size: 18px; color: var(--text-main); margin-bottom: 8px; }
+        .location { font-size: 14px; color: var(--text-sub); }
+
+        /* Section Styling */
+        .section {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        }
+
+        h2 { font-size: 20px; margin-bottom: 18px; color: var(--text-main); border-bottom: 2px solid var(--bg-gray); padding-bottom: 8px; }
+
+        .experience-item { margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+        .experience-item:last-child { border-bottom: none; margin-bottom: 0; }
+        
+        .job-title { font-weight: 600; font-size: 17px; color: var(--linkedin-blue); }
+        .company { font-size: 15px; font-weight: 500; margin: 3px 0; }
+        .date { font-size: 14px; color: var(--text-sub); }
+
+        /* Skills Layout */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        
+        .skill-tag {
+            background: #fff;
+            border: 1px solid var(--linkedin-blue);
+            color: var(--linkedin-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--linkedin-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 115, 177, 0.2);
+        }
+
+        /* Action Button */
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--linkedin-blue);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .contact-btn:hover {
+            background-color: #005582;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="profile-card">
+        <div class="banner"></div>
+        <div class="profile-info">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="映玲" class="avatar">
+            
+            <h1 class="name">映玲 (Anh Linh)</h1>
+            <p class="headline">行銷經理 | 數位轉型與品牌策略專家</p>
+            <p class="location">越南 河內 • <a href="#" style="color:var(--linkedin-blue); text-decoration:none;">聯絡資訊</a></p>
+            
+            <a href="mailto:your-email@example.com" class="contact-btn">建立聯繫</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>關於我</h2>
+        <p>
+            你好，我是<b>映玲</b>。我是一位專注於數位行銷與品牌成長的專業人士。擁有超過五年的行業經驗，
+            擅長透過數據分析與創意策略為企業提升市場競爭力。我熱衷於探索新技術，並將其轉化為具體的商務成果。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>工作經歷</h2>
+        <div class="experience-item">
+            <p class="job-title">高級行銷經理</p>
+            <p class="company">某國際科技股份有限公司</p>
+            <p class="date">2022年1月 - 至今</p>
+        </div>
+        <div class="experience-item">
+            <p class="job-title">數位內容企劃</p>
+            <p class="company">創意整合行銷工作室</p>
+            <p class="date">2019年6月 - 2021年12月</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>專業技能</h2>
+        <div class="skills-container">
+            <span class="skill-tag">數位策略 (Digital Strategy)</span>
+            <span class="skill-tag">搜尋引擎優化 (SEO)</span>
+            <span class="skill-tag">數據分析 (Data Analysis)</span>
+            <span class="skill-tag">專案管理 (Project Management)</span>
+            <span class="skill-tag">社群媒體經營 (Social Media)</span>
+            <span class="skill-tag">英語/越語 雙語溝通</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
