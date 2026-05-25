@@ -3,456 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>探索義安 - 20大絕美景點全攻略 (Top 20 Nghệ An Destinations)</title>
+    <title>探索義安 - 精簡版 (Nghệ An Travel Guide)</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
-            line-height: 1.7;
-            background-color: #f4f7f6;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #f5f7f8;
             color: #333;
+            line-height: 1.5;
+        }
+        ruby { ruby-align: center; }
+        rt { font-size: 0.55em; color: #e67e22; font-family: Arial, sans-serif; }
+
+        /* Header ngắn gọn */
+        header {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 5px; }
+        header p { font-size: 1rem; color: #ddd; }
+
+        /* Danh sách dạng Grid thu nhỏ để tiết kiệm không gian lướt */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
-        /* Thẻ Ruby hiển thị Pinyin */
-        ruby { ruby-align: center; }
-        rt { font-size: 0.55em; color: #f39c12; font-family: Arial, sans-serif; letter-spacing: 1px; }
-
-        /* Header */
-        header {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-            color: #fff;
-            height: 60vh;
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            transition: transform 0.2s;
         }
+        .card:hover { transform: translateY(-3px); }
 
-        header h1 { font-size: 3.8rem; margin-bottom: 20px; letter-spacing: 2px; }
-        .header-desc { font-size: 1.4rem; max-width: 800px; margin-bottom: 10px;}
-        .header-pinyin { font-size: 1.1rem; color: #bdc3c7; font-style: italic; }
-
-        /* Bố cục danh sách địa điểm */
-        .destinations-wrapper {
-            max-width: 1200px;
-            margin: -30px auto 50px auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .destination-card {
-            display: flex;
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            margin-bottom: 40px;
-            transition: transform 0.3s ease;
-        }
-
-        .destination-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .destination-card.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .dest-img {
-            flex: 1;
-            min-height: 380px;
-        }
-
-        .dest-img img {
+        .card-img {
+            height: 180px; /* Thu nhỏ chiều cao ảnh */
             width: 100%;
-            height: 100%;
             object-fit: cover;
         }
 
-        .dest-content {
-            flex: 1.2;
-            padding: 40px;
+        .card-body {
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            flex-grow: 1;
         }
 
-        .dest-content h3 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .location {
-            color: #27ae60;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
+        .card-body h3 { font-size: 1.3rem; color: #2c3e50; margin-bottom: 5px; }
+        .location { font-size: 0.85rem; color: #27ae60; font-weight: bold; margin-bottom: 10px; }
+        
         .text-group {
-            border-left: 4px solid #e74c3c;
-            background-color: #fdfbfb;
-            padding: 12px 15px;
-            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            border-left: 3px solid #e74c3c;
+            padding-left: 8px;
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
+        .text-tw { color: #444; margin-bottom: 3px; }
+        .text-py { color: #7f8c8d; font-style: italic; font-size: 0.8rem; }
 
-        .text-tw {
-            font-size: 1.15rem;
-            color: #444;
-            margin-bottom: 6px;
-            text-align: justify;
-        }
-
-        .text-py {
-            font-size: 0.95rem;
-            color: #7f8c8d;
-            font-family: Arial, sans-serif;
-            text-align: justify;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
+        /* Nút bản đồ thực tế */
+        .map-btn {
+            display: inline-block;
             text-align: center;
-            padding: 30px;
-            font-size: 1.1rem;
+            background: #34495e;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background 0.2s;
         }
+        .map-btn:hover { background: #e74c3c; }
+        .map-btn i { margin-left: 5px; }
 
-        @media(max-width: 900px) {
-            .destination-card, .destination-card.reverse { flex-direction: column; }
-            .dest-img { min-height: 280px; }
-            header h1 { font-size: 2.5rem; }
-        }
+        footer { background: #2c3e50; color: #fff; text-align: center; padding: 15px; font-size: 0.9rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>
-            <ruby>義<rt>Yì</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>二<rt>èr</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>勝<rt>shèng</rt></ruby><ruby>地<rt>dì</rt></ruby>
-        </h1>
-        <div class="header-desc">義安省最著名的20個自然與文化景點全攻略</div>
-        <div class="header-pinyin">Yì'ān shěng zuì zhùmíng de 20 gè zìrán yǔ wénhuà jǐngdiǎn quán gōnglüè</div>
+        <h1><ruby>義<rt>Yì</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>精<rt>jīng</rt></ruby><ruby>選<rt>xuǎn</rt></ruby><ruby>美<rt>měi</rt></ruby><ruby>景<rt>jǐng</rt></ruby></h1>
+        <p>義安省熱門景點導覽 (Hướng Dẫn Các Điểm Đến Nổi Bật Tại Nghệ An)</p>
     </header>
 
-    <div class="destinations-wrapper">
+    <div class="container">
 
         <!-- 1. Cửa Lò Beach -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cửa Lò">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>爐<rt>Lú</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>海<rt>hǎi</rt></ruby><ruby>灘<rt>tān</rt></ruby> (Cửa Lò)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 爐門市 (Thị xã Cửa Lò)</div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Cửa Lò">
+            <div class="card-body">
+                <h3><ruby>爐<rt>Lú</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>海<rt>hǎi</rt></ruby><ruby>灘<rt>tān</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Thị xã Cửa Lò</div>
                 <div class="text-group">
-                    <div class="text-tw">著名的海濱度假勝地，擁有平緩的沙灘和清澈的海水，以鮮美獨特的跳躍魷魚聞名。</div>
-                    <div class="text-py">Zhùmíng de hǎibīn dùjià shèngdì, yǒngyǒu pínghuǎn de shātān hé qīngchè de hǎishuǐ, yǐ xiānměi dútè de tiàoyuè yóuyú wénmíng.</div>
+                    <div class="text-tw">著名的海濱度假勝地，擁有平緩的沙灘和清澈的海水。</div>
+                    <div class="text-py">Zhùmíng de hǎibīn dùjià shèngdì, yǒngyǒu pínghuǎn de shātān hé qīngchè de hǎishuǐ.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/uXv7bX86gV4kM91p8" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 2. Thanh Chương Tea Island -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1587825287515-d9ebce2fc5eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thanh Chương">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>清<rt>Qīng</rt></ruby><ruby>漳<rt>zhāng</rt></ruby><ruby>茶<rt>chá</rt></ruby><ruby>島<rt>dǎo</rt></ruby> (Đảo Chè Thanh Chương)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 清漳縣 (Huyện Thanh Chương)</div>
+        <!-- 2. Pù Mát National Park -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Pù Mát">
+            <div class="card-body">
+                <h3><ruby>浦<rt>Pǔ</rt></ruby><ruby>麻<rt>má</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Con Cuông</div>
                 <div class="text-group">
-                    <div class="text-tw">無數綠意盎然的茶丘小島浮在湖面上，被譽為中部的「陸上下龍灣」，景色如詩如畫。</div>
-                    <div class="text-py">Wúshù lǜyì àngrán de cháqiū xiǎodǎo fú zài húmiàn shàng, bèi yù wèi zhōngbù de "Lùshàng Xiàlóngwān", jǐngsè rú shī rú huà.</div>
+                    <div class="text-tw">世界生物圈保護區，擁有豐富的原始森林生態系統。</div>
+                    <div class="text-py">Shìjiè shēngwùquān bǎohùqū, yǒngyǒu fēngfù de yuánshǐ sēnlín shēngtài xìtǒng.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/9t7WvQ8PzY5t7b6U7" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 3. Pù Mát National Park -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pù Mát">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>浦<rt>Pǔ</rt></ruby><ruby>麻<rt>má</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby> (Vườn Quốc Gia Pù Mát)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 昆光縣 (Huyện Con Cuông)</div>
+        <!-- 3. Nghĩa Đàn Sunflower Field -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Nghĩa Đàn">
+            <div class="card-body">
+                <h3><ruby>義<rt>Yì</rt></ruby><ruby>壇<rt>tán</rt></ruby><ruby>向<rt>xiàng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>葵<rt>kuí</rt></ruby><ruby>田<rt>tián</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Nghĩa Đàn</div>
                 <div class="text-group">
-                    <div class="text-tw">世界生物圈保護區，擁有極為豐富的原始森林生態系統、奇特的野生動植物和清澈的藍江。</div>
-                    <div class="text-py">Shìjiè shēngwùquān bǎohùqū, yǒngyǒu jíwéi fēngfù de yuánshǐ sēnlín shēngtài xìtǒng, qítè de yěshēng dòngzhíwù hé qīngchè de Lánjiāng.</div>
+                    <div class="text-tw">越南最大的向日葵花田，盛開時一片耀眼的金色花海。</div>
+                    <div class="text-py">Yuènán zuìdà de xiàngrìkuí huātián, shèngkāi shí yīpiàn yàoyǎn de jīnhuáng sè huāhǎi.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/wYw9S24KjLq8Pz5m6" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 4. Nghĩa Đàn Sunflower Field -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nghĩa Đàn">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>義<rt>Yì</rt></ruby><ruby>壇<rt>tán</rt></ruby><ruby>向<rt>xiàng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>葵<rt>kuí</rt></ruby><ruby>田<rt>tián</rt></ruby> (Cánh Đồng Hướng Dương)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 義壇縣 (Huyện Nghĩa Đàn)</div>
+        <!-- 4. Mường Lống -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Mường Lống">
+            <div class="card-body">
+                <h3><ruby>芒<rt>Máng</rt></ruby><ruby>弄<rt>nòng</rt></ruby> - <ruby>義<rt>Yì</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>沙<rt>shā</rt></ruby><ruby>壩<rt>bà</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Kỳ Sơn</div>
                 <div class="text-group">
-                    <div class="text-tw">越南最大的向日葵花田，每年底盛開時，數百公頃的金黃色花海吸引成千上萬遊客。</div>
-                    <div class="text-py">Yuènán zuìdà de xiàngrìkuí huātián, měi niándǐ shèngkāi shí, shùbǎi gōngqǐng de jīnhuángsè huāhǎi xīyǐn chéngqiānshàngwàn yóukè.</div>
+                    <div class="text-tw">高山盆地氣候涼爽，雲海繚繞，被稱為義安的沙壩。</div>
+                    <div class="text-py">Gāoshān péndì qìhòu liángshuǎng, yúnhǎi liáorào, bèi chēng wèi Yì'ān de Shābà.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/vA8W7S6KjLq8Pz7b8" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 5. Mường Lống -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mường Lống">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>芒<rt>Máng</rt></ruby><ruby>弄<rt>nòng</rt></ruby> - <ruby>義<rt>Yì</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>沙<rt>shā</rt></ruby><ruby>壩<rt>bà</rt></ruby> (Mường Lống)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 祈山縣 (Huyện Kỳ Sơn)</div>
+        <!-- 5. Làng Sen Kim Liên -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Kim Liên">
+            <div class="card-body">
+                <h3><ruby>金<rt>Jīn</rt></ruby><ruby>蓮<rt>lián</rt></ruby><ruby>胡<rt>Hú</rt></ruby><ruby>志<rt>zhì</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>居<rt>jū</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Nam Đàn</div>
                 <div class="text-group">
-                    <div class="text-tw">海拔1500米的高山盆地，氣候四季涼爽，雲海繚繞，是高山賞花與雲海打卡的勝地。</div>
-                    <div class="text-py">Hǎibá 1500 mǐ de gāoshān péndì, qìhòu sìjì liángshuǎng, yúnhǎi liáorào, shì gāoshān shǎnghuā yǔ yúnhǎi dǎkǎ de shèngdì.</div>
+                    <div class="text-tw">胡志明主席的故鄉，散發著越南傳統鄉村的古樸。</div>
+                    <div class="text-py">Hú Zhìmíng zhǔxí de gùxiāng, sànfāzhe Yuènán chuántǒng xiāngcūn de gǔpǔ.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/9z7WvQ8PzY5t7b6U9" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 6. Làng Sen Kim Liên -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kim Liên">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>金<rt>Jīn</rt></ruby><ruby>蓮<rt>lián</rt></ruby><ruby>胡<rt>Hú</rt></ruby><ruby>志<rt>zhì</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>居<rt>jū</rt></ruby> (Làng Sen Kim Liên)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 南壇縣 (Huyện Nam Đàn)</div>
+        <!-- 6. Bãi Lữ -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Bãi Lữ">
+            <div class="card-body">
+                <h3><ruby>呂<rt>Lǚ</rt></ruby><ruby>灘<rt>tān</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Nghi Lộc</div>
                 <div class="text-group">
-                    <div class="text-tw">越南國父胡志明主席誕生與成長的地方，茅草屋、竹籬笆與荷花池散發著傳統鄉村的古樸。</div>
-                    <div class="text-py">Yuènán guófù Hú Zhìmíng zhǔxí dànshēng yǔ chéngzhǎng de dìfāng, máocǎowū, zhúlíbā yǔ héhuāchí sànfāzhe chuántǒng xiāngcūn de gǔpǔ.</div>
+                    <div class="text-tw">依山傍海的天然海灘，碧海與綿延松林交織非常美麗。</div>
+                    <div class="text-py">Yīshān bànghǎi de tiānrán hǎitān, bìhǎi yǔ miányán sōnglín jiāozhī fēicháng měilì.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/uXv7bX86gV4kM91q9" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 7. Đảo Lan Châu -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1473496169904-658ba37448eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Đảo Lan Châu">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>蘭<rt>Lán</rt></ruby><ruby>洲<rt>zhōu</rt></ruby><ruby>島<rt>dǎo</rt></ruby> (Đảo Lan Châu)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 爐門市 (Thị xã Cửa Lò)</div>
+        <!-- 7. Thác Khe Kèm -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Thác Khe Kèm">
+            <div class="card-body">
+                <h3><ruby>溪<rt>Xī</rt></ruby><ruby>坎<rt>kǎn</rt></ruby><ruby>瀑<rt>pù</rt></ruby><ruby>布<rt>bù</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Con Cuông</div>
                 <div class="text-group">
-                    <div class="text-tw">緊鄰爐門海灘，形似巨蟾奔海。島上有清代的古燈塔，是俯瞰海景、看日出與浪花拍石的絕佳視角。</div>
-                    <div class="text-py">Jǐnlín Lúmén hǎitān pángbiān, xíngsì jùchán bēnhǎi. Dǎoshàng yǒu Qīngdài de gǔ dēngtǎ, shì fǔkàn hǎijǐng, kàn rìchū yǔ lànghuā pāishí de juéjiā shìjiǎo.</div>
+                    <div class="text-tw">高達500公尺，水流從高山絕壁傾瀉而下，氣勢磅礴。</div>
+                    <div class="text-py">Gāodá 500 gōngchǐ, shuǐliú cóng gāoshān juébì qīngxiè ér xià, qìshì pángbó.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/3t7WvQ8PzY5t7b6R8" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 8. Bãi Lữ -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bãi Lữ">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>呂<rt>Lǚ</rt></ruby><ruby>灘<rt>tān</rt></ruby> (Bãi Lữ)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 宜祿縣 (Huyện Nghi Lộc)</div>
+        <!-- 8. Đồi hoang Trương Gia -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Đồi hoang Trương Gia">
+            <div class="card-body">
+                <h3><ruby>張<rt>Zhāng</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>野<rt>yě</rt></ruby><ruby>丘<rt>qiū</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Quỳnh Lưu</div>
                 <div class="text-group">
-                    <div class="text-tw">依山傍海的天然海灘，碧海、怪石與綿延的松林交織，具有未經雕琢的原始野性美。</div>
-                    <div class="text-py">Yīshān bànghǎi de tiānrán hǎitān, bìhǎi, guàishí yǔ miányán de sōnglín jiāozhī, jùyǒu wèijīng diāozhuó de yuánshǐ yěxìng měi.</div>
+                    <div class="text-tw">新興的露營秘境，擁有大片起伏的草坪與絕美日落。</div>
+                    <div class="text-py">Xīnxīng de lùyíng mìjìng, yǒngyǒu dàpiàn qǐfú de cǎopíng yǔ juéměi rìluò.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/vA8W7S6KjLq8Pz5z9" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 9. Thác Khe Kèm -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thác Khe Kèm">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>溪<rt>Xī</rt></ruby><ruby>坎<rt>kǎn</rt></ruby><ruby>瀑<rt>pù</rt></ruby><ruby>布<rt>bù</rt></ruby> (Thác Khe Kèm)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 昆光縣 (Huyện Con Cuông)</div>
+        <!-- 9. Cánh đồng muối Diễn Châu -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1618083707368-b3823daa2726?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Cánh đồng muối">
+            <div class="card-body">
+                <h3><ruby>演<rt>Yǎn</rt></ruby><ruby>州<rt>zhōu</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>鹽<rt>yán</rt></ruby><ruby>田<rt>tián</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Diễn Châu</div>
                 <div class="text-group">
-                    <div class="text-tw">高達500公尺，水流從高山絕壁傾瀉而下，水霧騰空，被公認為越南最雄偉的天然瀑布之一。</div>
-                    <div class="text-py">Gāodá 500 gōngchǐ, shuǐliú cóng gāoshān juébì qīngxiè ér xià, shuǐwù téngkōng, bèi gōngrèn wèi Yuènán zuì xióngwěi de tiānrán pùbù zhī yī.</div>
+                    <div class="text-tw">陽光照耀下的鹽田如同天空之鏡，構成美麗的人文景觀。</div>
+                    <div class="text-py">Yángguāng zhàoyào xià de yántián rútóng tiānkōng zhī jìng, gòuchéng měilì de rénwén jǐngguān.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/9z7WvQ8PzY5t7b6X7" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 10. Thác Sao Va -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1506132958273-03f9050d53c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thác Sao Va">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>撒<rt>Sā</rt></ruby><ruby>瓦<rt>wǎ</rt></ruby><ruby>瀑<rt>pù</rt></ruby><ruby>布<rt>bù</rt></ruby> (Thác Sao Va)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 桂峰縣 (Huyện Quế Phong)</div>
+        <!-- 10. Rừng nguyên sinh Sang Lẻ -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Rừng Sang Lẻ">
+            <div class="card-body">
+                <h3><ruby>桑<rt>Sāng</rt></ruby><ruby>勒<rt>lè</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>林<rt>lín</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Tương Dương</div>
                 <div class="text-group">
-                    <div class="text-tw">隱藏在西北部深山中，瀑布寬闊，水流湍急，周圍環繞著泰族少數民族的原始村落。</div>
-                    <div class="text-py">Yǐncáng zài xīběibù shēnshān zhōng, pùbù kuānkuò, shuǐliú tuānjí, zhōuwéi huánràozhe Tàizú shǎoshù mínzú de yuánshǐ cūnlùo.</div>
+                    <div class="text-tw">巨型桑勒樹森林，古樹群在公路兩旁築起綠色隧道。</div>
+                    <div class="text-py">Jùxíng Sānglè shù sēnlín, gǔshùqún zài gōnglù liǎngpáng zhùqǐ lǜsè suìdào.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/uXv7bX86gV4kM91z8" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 11. Đồi hoang Trương Gia (Truong Gia Wild Hill) -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Đồi hoang Trương Gia">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>張<rt>Zhāng</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>野<rt>yě</rt></ruby><ruby>丘<rt>qiū</rt></ruby> (Đồi hoang Trương Gia)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 瓊瑠縣 (Huyện Quỳnh Lưu)</div>
+        <!-- 11. Đền Ông Hoàng Mười -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Đền Ông Hoàng Mười">
+            <div class="card-body">
+                <h3><ruby>十<rt>Shí</rt></ruby><ruby>皇<rt>huáng</rt></ruby><ruby>爺<rt>yé</rt></ruby><ruby>廟<rt>miào</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Hưng Nguyên</div>
                 <div class="text-group">
-                    <div class="text-tw">新興的露營與健行秘境，擁有大片起伏的天然草坪，是俯瞰瓊瑠平原與遠眺日落的絕佳地點。</div>
-                    <div class="text-py">Xīnxīng de lùyíng yǔ jiànxíng mìjìng, yǒngyǒu dàpiàn qǐfú de tiānrán cǎopíng, shì fǔkàn Qióngliú píngyuán yǔ yuǎntiào rìluò de juéjiā dìdiǎn.</div>
+                    <div class="text-tw">著名的精神信仰中心，是供奉民間傳奇英雄的神聖古廟。</div>
+                    <div class="text-py">Zhùmíng de jīngshén xìnyǎng zhōngxīn, shì gòngfèng mínjiān chuánqí yīngxióng de shénshèng gǔmiào.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/3t7WvQ8PzY5t7b6T9" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 12. Cánh đồng muối Diễn Châu -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1618083707368-b3823daa2726?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cánh đồng muối">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>演<rt>Yǎn</rt></ruby><ruby>州<rt>zhōu</rt></ruby><ruby>鹽<rt>yán</rt></ruby><ruby>田<rt>tián</rt></ruby> (Cánh Đồng Muối Diễn Châu)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 演州縣 (Huyện Diễn Châu)</div>
+        <!-- 12. Chùa Đại Tuệ -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Chùa Đại Tuệ">
+            <div class="card-body">
+                <h3><ruby>大<rt>Dà</rt></ruby><ruby>慧<rt>huì</rt></ruby><ruby>寺<rt>sì</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Nam Đàn</div>
                 <div class="text-group">
-                    <div class="text-tw">陽光照耀下的鹽田如同巨大的鏡子。傍晚時分，鹽民挑鹽的身影映在水面上，構成美麗的人文景觀。</div>
-                    <div class="text-py">Yángguāng zhàoyào xià de yántián rútóng jùdà de jìngzi. Bàngwǎn shífēn, yánmín tiǎoyán de shēnyǐng yìng zài shuǐmiàn shàng, gòuchéng měilì de rénwén jǐngguān.</div>
+                    <div class="text-tw">坐落於山巔的千年古剎，可俯瞰整片縱橫交錯的藍江平原。</div>
+                    <div class="text-py">Zuòluò yú shāndiān de qiānnián gǔchà, kě fǔkàn zhěngpiàn zònghéng jiāocuò de Lánjiāng píngyuán.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/9z7WvQ8PzY5t7b6T7" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 13. Rừng nguyên sinh Sang Lẻ -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rừng Sang Lẻ">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>桑<rt>Sāng</rt></ruby><ruby>勒<rt>lè</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>林<rt>lín</rt></ruby> (Rừng Sang Lẻ)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 襄陽縣 (Huyện Tương Dương)</div>
+        <!-- 13. Đỉnh Phuxai Lai Leng -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Phuxai Lai Leng">
+            <div class="card-body">
+                <h3><ruby>普<rt>Pǔ</rt></ruby><ruby>西<rt>xī</rt></ruby><ruby>萊<rt>lái</rt></ruby><ruby>楞<rt>léng</rt></ruby><ruby>巔<rt>diān</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Biên giới Việt - Lào (Kỳ Sơn)</div>
                 <div class="text-group">
-                    <div class="text-tw">越南獨一無二的巨型桑勒樹森林。高聳入雲的古樹群在公路兩旁築起綠色隧道，陰涼神秘。</div>
-                    <div class="text-py">Yuènán dúyīwúèr de jùxíng Sānglè shù sēnlín. Gāosǒng rùyún de gǔshùqún zài gōnglù liǎngpáng zhùqǐ lǜsè suìdào, yīnjiáng shénmì.</div>
+                    <div class="text-tw">海拔2728公尺，長山山脈最高峰，是極限登山的朝聖地。</div>
+                    <div class="text-py">Hǎibá 2728 gōngchǐ, Chángshān shānmài zuìgāofēng, shì jíxiàn dēngshān de cháoshèngdì.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/vA8W7S6KjLq8Pz5x8" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 14. Đền Ông Hoàng Mười -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Đền Ông Hoàng Mười">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>十<rt>Shí</rt></ruby><ruby>皇<rt>huáng</rt></ruby><ruby>爺<rt>yé</rt></ruby><ruby>廟<rt>miào</rt></ruby> (Đền Ông Hoàng Mười)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 興元縣 (Huyện Hưng Nguyên)</div>
+        <!-- 14. Biển Quỳnh -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Biển Quỳnh">
+            <div class="card-body">
+                <h3><ruby>瓊<rt>Qióng</rt></ruby><ruby>海<rt>hǎi</rt></ruby><ruby>灘<rt>tān</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Quỳnh Lưu</div>
                 <div class="text-group">
-                    <div class="text-tw">義安省最著名的精神信仰與靈性中心。面向河流，香火鼎盛，是供奉民間傳奇英雄的神聖古廟。</div>
-                    <div class="text-py">Yì'ān shěng zuì zhùmíng de jīngshén xìnyǎng yǔ língxìng zhōngxīn. Miànxiàng héliú, xiānghuǒ dǐngshèng, shì gòngfèng mínjiān chuánqí yīngxióng de shénshèng gǔmiào.</div>
+                    <div class="text-tw">由七個原始海灘組成，以奇特岩石構造和純淨風光著稱。</div>
+                    <div class="text-py">Yóu qī gè yuánshǐ hǎitān zǔchéng, yǐ qítè yánshí gòuzào hé chúnjìng fēngguāng zhùchēng.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/uXv7bX86gV4kM91x7" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 15. Hang Bua -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1507163546645-54929a05a4cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hang Bua">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>蓮<rt>Lián</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>溶<rt>róng</rt></ruby><ruby>洞<rt>dòng</rt></ruby> (Hang Bua)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 葵州縣 (Huyện Quỳ Châu)</div>
+        <!-- 15. Thác Hồng Sơn -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Thác Hồng Sơn">
+            <div class="card-body">
+                <h3><ruby>紅<rt>Hóng</rt></ruby><ruby>山<rt>shān</rt></ruby><ruby>瀑<rt>pù</rt></ruby><ruby>打<rt>bǎ</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Huyện Tân Kỳ</div>
                 <div class="text-group">
-                    <div class="text-tw">一個巨大的天然石灰岩溶洞，內有鬼斧神工的鐘乳石奇觀，同時也是泰族每年舉辦傳統春季祭典的地點。</div>
-                    <div class="text-py">Yī gè jùdà de tiānrán shíhuīyán róngdòng, nèi yǒu guǐfǔshéngōng de zhōngrǔshí qíguān, tóngshí yěshì Tàizú měinián jǔbàn chuántǒng chūnjì jìdiǎn de dìfāng.</div>
+                    <div class="text-tw">隱秘的四層落差瀑布，周遭古樹參天，是盛夏避暑的桃源。</div>
+                    <div class="text-py">Yǐnmì de sì céng luòchā pùbù, zhōuzāo gǔshù cāntiān, shì shèngxià bìshǔ de táoyuán.</div>
                 </div>
+                <a href="https://maps.app.goo.gl/vA8W7S6KjLq8Pz5y7" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
-        <!-- 16. Chùa Đại Tuệ -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chùa Đại Tuệ">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>大<rt>Dà</rt></ruby><ruby>慧<rt>huì</rt></ruby><ruby>寺<rt>sì</rt></ruby> (Chùa Đại Tuệ)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 南壇縣 (Huyện Nam Đàn)</div>
+        <!-- 16. Thành cổ Vinh -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img" alt="Thành cổ Vinh">
+            <div class="card-body">
+                <h3><ruby>榮<rt>Róng</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>古<rt>gǔ</rt></ruby><ruby>城<rt>chéng</rt></ruby><ruby>門<rt>mén</rt></ruby></h3>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Thành phố Vinh</div>
                 <div class="text-group">
-                    <div class="text-tw">坐落於大慧山巔的千年古剎，可俯瞰整片縱橫交錯的藍江平原。寺內擁有許多石雕佛像紀錄。</div>
-                    <div class="text-py">Zuòluò yú Dàhuì shāndiān de qiānnián gǔchà, kě fǔkàn zhěngpiàn zònghéng jiāocuò de Lánjiāng píngyuán. Sìnèi yǒngyǒu xǔduō shídiāo fóxiàng jìlù.</div>
+                    <div class="text-tw">建於1831年的古城殘存遺蹟，至今仍保留著宏偉的古老城門。</div>
+                    <div class="text-py">Jiàn yú 1831 nián de gǔchéng cáncún yíjī, zhìjīn réng bǎoliúzhe hóngwěi de gǔlǎo chéngmén.</div>
                 </div>
-            </div>
-        </div>
-
-        <!-- 17. Đỉnh Phuxai Lai Leng -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Phuxai Lai Leng">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>普<rt>Pǔ</rt></ruby><ruby>西<rt>xī</rt></ruby><ruby>萊<rt>lái</rt></ruby><ruby>楞<rt>léng</rt></ruby><ruby>巔<rt>diān</rt></ruby> (Phuxai Lai Leng)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 祈山縣越南-寮國邊境 (Kỳ Sơn)</div>
-                <div class="text-group">
-                    <div class="text-tw">海拔2728公尺，是長山山脈的最高峰。長年冰冷、道路險峻，是極限登山與越野愛好者的朝聖地。</div>
-                    <div class="text-py">Hǎibá 2728 gōngchǐ, shì Chángshān shānmài de zuìgāofēng. Chángnián bīnglěng, dàolù xiǎnjùn, shì jíxiàn dēngshān yǔ yuèyě àihàozhě de cháoshèngdì.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 18. Biển Quỳnh -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Biển Quỳnh">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>瓊<rt>Qióng</rt></ruby><ruby>海<rt>hǎi</rt></ruby><ruby>灘<rt>tān</rt></ruby> (Biển Quỳnh)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 瓊瑠縣 (Huyện Quỳnh Lưu)</div>
-                <div class="text-group">
-                    <div class="text-tw">由相連的七個原始海灘組成，以其奇特的多彩岩石構造、神秘的岩洞和無污染的純淨風光著稱。</div>
-                    <div class="text-py">Yóu xiānglián de qī gè yuánshǐ hǎitān zǔchéng, yǐ qí qítè de duōcǎi yánshí gòuzào, shénmì de yándòng hé wúwūrǎn de chúnjìng fēngguāng zhùchēng.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 19. Thác Hồng Sơn -->
-        <div class="destination-card">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thác Hồng Sơn">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>紅<rt>Hóng</rt></ruby><ruby>山<rt>shān</rt></ruby><ruby>瀑<rt>pù</rt></ruby><ruby>布<rt>bù</rt></ruby> (Thác Hồng Sơn)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 蕪湖縣 (Huyện Tân Kỳ)</div>
-                <div class="text-group">
-                    <div class="text-tw">穿過層層山巒的隱秘瀑布，共有四層落差，周遭古樹參天、空氣冰涼，是盛夏避暑的世外桃源。</div>
-                    <div class="text-py">Chuānguò céngcéng shānluán de yǐnmì pùbù, gòngyǒu sì céng luòchā, zhōuzāo gǔshù cāntiān, kōngqì bīngliáng, shì shèngxià bìshǔ de shìwàitáoyuán.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 20. Thành cổ Vinh -->
-        <div class="destination-card reverse">
-            <div class="dest-img">
-                <img src="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thành cổ Vinh">
-            </div>
-            <div class="dest-content">
-                <h3><ruby>榮<rt>Róng</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>古<rt>gǔ</rt></ruby><ruby>城<rt>chéng</rt></ruby><ruby>門<rt>mén</rt></ruby> (Thành Cổ Vinh)</h3>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> 榮市 (Thành phố Vinh)</div>
-                <div class="text-group">
-                    <div class="text-tw">由阮朝明命帝於1831年下令建造的 Vauban 式古城殘存遺蹟。歷經歲月洗禮，至今仍保留著宏偉的古老城門。</div>
-                    <div class="text-py">Yóu Ruǎncháo Míngmìngdì yú 1831 nián xiàlìng jiànzào de Vauban shì gǔchéng cáncún yíjī. Lìjīng suìyuè xǐlǐ, zhìjīn réng bǎoliúzhe hóngwěi de gǔlǎo chéngmén.</div>
-                </div>
+                <a href="https://maps.app.goo.gl/9z7WvQ8PzY5t7b6Y6" target="_blank" class="map-btn">Google Maps <i class="fas fa-map-marked-alt"></i></a>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>探索義安 Tànsuǒ Yì'ān &copy; 2026 - 義安山水美不勝收</p>
-        <p style="font-size: 0.85rem; color: #bdc3c7; margin-top: 5px;">Top 20 Must-Visit Landscapes in Nghe An, Vietnam</p>
+        <p>探索義安 Tànsuǒ Yì'ān &copy; 2026</p>
     </footer>
 
 </body>
